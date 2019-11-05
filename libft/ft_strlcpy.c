@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcopy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 13:41:42 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/04 16:15:17 by gmartine         ###   ########.fr       */
+/*   Created: 2019/09/11 13:12:15 by gmartine          #+#    #+#             */
+/*   Updated: 2019/09/12 12:29:35 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-void    *ft_memcpy (void *destination, const void *source, size_t num)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned char	*dest;
-	unsigned char	*src;
-	size_t			i;
+	unsigned int	i;
+	int				ret;
 
-	dest = (unsigned char *)destination;
-	src = (unsigned char *)source;
 	i = 0;
-	while (i < num)
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+	ret = i;
+	i = 0;
+	while (i < size - 1 && src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	return (destination);
+	if (size > 0)
+		dest[i] = '\0';
+	return (ret);
 }
