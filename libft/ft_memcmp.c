@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:21:47 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/05 13:40:36 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:48:58 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 
 	str1 = (unsigned char *)ptr1;
 	str2 = (unsigned char *)ptr2;
-
 	i = 0;
 	while (str1[i] == str2[i] && i < num)
 		i++;

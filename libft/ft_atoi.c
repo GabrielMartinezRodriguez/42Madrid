@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 12:50:19 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 13:18:54 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:49:45 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int		ft_atoi(char *str)
 		sign = -1;
 		i++;
 	}
+	else if (str[i] == '+')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		number = 10 * number + str[i] - '0';
 		i++;
 	}
-	return (number);
+	return (number * sign);
 }

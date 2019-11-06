@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:44:27 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 17:14:39 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:44:30 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			*ft_memcpy(void *destination, const void *source, size_t num);
 void			*ft_memmove(void *destination, const void *source, size_t num);
 void			*ft_memset(void *mem, int byte, size_t len);
 char			*ft_strchr(char *s, int c);
-char			*strdup(const char *str1);
+char			*ft_strdup(const char *str1);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int				ft_strlen(char *str);

@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 19:36:03 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 17:51:36 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:51:05 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n)
 		i++;
 		first = 0;
 	}
-	if(u_s1[i] == '\0' && u_s2[i] != '\0')
+	if (u_s1[i] == '\0' && u_s2[i] != '\0')
 		flag = -1;
 	return (flag);
 }
