@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   strchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 19:36:28 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 13:21:27 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/06 12:57:05 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/06 13:11:22 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdio.h>
 
-char	*ft_strnstr(char *str, char *to_find, size_t len)
+char    *strchr(const char *s, int c)
 {
-	int		find;
-	int		i;
-	int		j;
-	char	*ptr;
+    char    *devolver;
+    int     i;
+    int     fin;
 
-	ptr = NULL;
-	find = 0;
-	i = 0;
-	if (to_find[0] == '\0')
-		find = 1;
-	while (str[i] != '\0' && find == 0 && i < len) 
-	{
-		if (str[i] == to_find[j])
-			j++;
-		else
-			j = 0;
-		if (to_find[j] == '\0')
-			find = 1;
-		i++;
-	}
-	if (find == 1)
-		ptr = str + i - j;
-	return (ptr);
+    devolver = NULL;
+    i = 0;
+    fin = 0;
+    while(fin == 0)
+    {
+        if(c == s[i])
+        {
+            devolver = &s[i];
+            fin = 1;
+        }
+        if(s[i] == '/0')
+            fin = 1;
+        i++;
+    }
+    return (devolver);
 }

@@ -6,24 +6,13 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:33:04 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/04 13:33:25 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 12:46:06 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(char *str)
+int		ft_tolower(int c)
 {
-	int fin;
-	int i;
-
-	i = 0;
-	fin = 1;
-	while (str[i] != '\0' && fin == 1)
-	{
-		if (str[i] > 'z' || str[i] < 'a')
-		{
-			fin = 0;
-		}
-		i++;
-	}
-	return (fin);
+	if (c >= 'A' && c <= 'Z')
+		c = c + 32;
+	return (c);
 }
