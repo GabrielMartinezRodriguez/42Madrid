@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 19:36:28 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 13:21:27 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:44:12 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char	*ft_strnstr(char *str, char *to_find, size_t len)
 {
 	int		find;
-	int		i;
+	size_t	i;
 	int		j;
 	char	*ptr;
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 	i = 0;
 	if (to_find[0] == '\0')
 		find = 1;
-	while (str[i] != '\0' && find == 0 && i < len) 
+	while (str[i] != '\0' && find == 0 && i < len)
 	{
 		if (str[i] == to_find[j])
 			j++;

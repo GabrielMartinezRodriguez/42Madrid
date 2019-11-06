@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 17:16:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/04 19:03:08 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:35:46 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_memccpy(void *destination, const void *source, int c, size_t num)
 		dest[i] = src[i];
 		i++;
 	}
-	if (i != num)
+	if (!(src[i - 1] != (unsigned char)c))
 		return (destination + i);
 	else
 		return (NULL);

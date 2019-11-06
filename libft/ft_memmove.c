@@ -6,14 +6,14 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 17:44:53 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/04 17:45:35 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:50:50 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 
-void	*ft_memcpy(void *destination, const void *source, size_t num)
+void	*ft_memmove(void *destination, const void *source, size_t num)
 {
 	unsigned char	*dest;
 	unsigned char	*src;
