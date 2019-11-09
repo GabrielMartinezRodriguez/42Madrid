@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_insert_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 13:42:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 18:55:14 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/09 18:59:59 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/09 19:37:05 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *str1)
+char **ft_insert_string(char **table, char *str)
 {
-	char	*aux;
-	int		i1;
-	int		i2;
+    int i;
+    char **aux;
 
-	i1 = 0;
-	while (str1[i1] != '\0')
-		i1++;
-	aux = malloc(i1 + 1);
-	i2 = 0;
-	while (i2 < i1)
-	{
-		aux[i2] = str1[i2];
-		i2++;
-	}
-	aux[i1] = '\0';
-	return (aux);
+    while(table != NULL)
+        i++;
+    i++;
+    aux = malloc(i * sizeof(char *));
+    i = 0;
+    while(table != NULL)
+    {
+        aux[i]=table[i];
+        i++;
+    }
+    aux[i] = str;
+    aux[i + 1] = NULL;
+    free(table);
+    return aux;
 }

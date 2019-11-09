@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 13:42:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 18:55:14 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/09 13:53:10 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/09 19:58:56 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *str1)
+char	**ft_split(char const *s, char c)
 {
-	char	*aux;
-	int		i1;
-	int		i2;
+	int		i;
+	char	**aux;
+	char	*ptr;
+	int		ini;
+	int		seeking;
 
-	i1 = 0;
-	while (str1[i1] != '\0')
-		i1++;
-	aux = malloc(i1 + 1);
-	i2 = 0;
-	while (i2 < i1)
+	aux = NULL;
+	ini = 0;
+	seeking = 1;
+	i = 0;
+	while (s[i++] != '\0')
 	{
-		aux[i2] = str1[i2];
-		i2++;
+		if (seeking && s[i - 1] != c)
+		{
+			ini = i - 1;
+			seeking = 0;
+		}
+		else if (seeking == 0 && (s[i - 1] == c || s[i] == '\0'))
+		{
+			seeking = 1;
+			ptr = ft_strndup(&s[i], i - ini - 1);
+			aux = ft_insert_string(aux, ptr);
+		}
 	}
-	aux[i1] = '\0';
 	return (aux);
 }

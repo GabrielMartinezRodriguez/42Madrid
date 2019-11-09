@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 13:42:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 18:55:14 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/09 13:28:24 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/09 13:46:56 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *str1)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*aux;
-	int		i1;
-	int		i2;
+	int		i;
+	int		j;
+	int		flag;
+	int		k;
 
-	i1 = 0;
-	while (str1[i1] != '\0')
-		i1++;
-	aux = malloc(i1 + 1);
-	i2 = 0;
-	while (i2 < i1)
+	aux = malloc(ft_strlen(s1) + 1);
+	i = 0;
+	k = 0;
+	while (s1[i++] != '\0')
 	{
-		aux[i2] = str1[i2];
-		i2++;
+		j = 0;
+		flag = 1;
+		while (set[j] != '\0' && flag)
+		{
+			if (set[j] == s1[i])
+				flag = 0;
+			j++;
+		}
+		if (flag && ++k)
+			aux[k - 1] = s1[i];
 	}
-	aux[i1] = '\0';
+	aux[k - 1] = '\0';
 	return (aux);
 }
