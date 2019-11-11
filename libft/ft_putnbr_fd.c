@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_insert_string.c                                 :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 18:59:59 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 15:27:47 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/11 20:47:55 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/11 21:10:19 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
-char **ft_insert_string(char **table, char *str)
+void	ft_putnbr_fd(int nb, int fd)
 {
-    int i;
-    char **aux;
+	char aux;
 
-    i = 0;
-    while(table[i++] != NULL);
-    i++;
-    aux = malloc(i * sizeof(char *));
-    i = 0;
-    while(table[i] != NULL)
-    {
-        aux[i]=table[i];
-        i++;
-    }
-    aux[i] = str;
-    aux[i + 1] = NULL;
-    free(table);
-    return aux;
+	if (nb == -2147483648)
+	{
+		write(fd, "-2", 2);
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb = -nb;
+	}
+	if (nb <= 9)
+	{
+		aux = nb + '0';
+		write(fd, &aux, 1);
+	}
+	else
+	{
+		aux = (nb % 10) + '0';
+		nb = nb / 10;
+		ft_putnbr_fd(nb, fd);
+		write(fd, &aux, 1);
+	}
 }

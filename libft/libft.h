@@ -6,13 +6,15 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:44:27 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 20:02:21 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/11 21:03:50 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 int				ft_atoi(char *str);
 void			ft_bzero(void *mem, size_t len);
@@ -47,4 +49,10 @@ char            *ft_itoa(int n);
 char            **ft_split(char const *s, char c);
 char            *ft_strndup(const char *str1, int n);
 char			**ft_insert_string(char **table, char *str);
+char            *ft_strmapi(char *s, char (*f)(unsigned int, char));
+void            ft_putstr_fd(char *s, int fd);
+void            ft_putchar_fd(char c, int fd);
+void	        ft_putnbr(int nb);
+void            ft_putnbr_fd(int nb, int fd);
+void            ft_putendl_fd(char *s, int fd);
 #endif

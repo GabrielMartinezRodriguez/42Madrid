@@ -3,9 +3,9 @@ SRCS =	$(wildcard *.c)
 OBJ =  $(wildcard *.o)
 CC = gcc
 CFLAGS +=-Wextra -Werror -Wall -I./
-$(NAME): 	
-	$(CC) $(FLAG) -c *.c 
-	ar -rcs libft.a *.o
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -c $(SRCS)
+	ar -rcs libft.a $(OBJ)
 	ranlib ${NAME}
 all: $(NAME)
 clean:

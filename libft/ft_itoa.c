@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 19:38:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 21:11:06 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/11 13:51:47 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,34 @@
 #include <stdio.h>
 #include "libft.h"
 
-int itoa2(int n, char **str, int *sign,long int *num);
+static int             itoa2(int n, char **str, int *sign,long int *num);
+
+static int		itoa2(int n, char **str, int *sign,long int *num)
+{
+	int size;
+	long int cpy;
+
+	size = 0;
+	*sign = 0;
+	if (n < 0)
+	{
+		*num = -((long int)n);
+		*sign = 1;
+	}
+	else
+		*num = n;
+	cpy = *num;
+	if (n == 0)
+		size = 1;
+	while (cpy != 0)
+	{
+		size++;
+		cpy = cpy / 10;
+	}
+	*str = malloc(size + 1 + *sign);
+	return (size);
+}
+
 
 char	*ft_itoa(int n)
 {
@@ -24,39 +51,16 @@ char	*ft_itoa(int n)
 	int				sign;
 	char			*aux;
 
-	size = itoa2(n,&aux, &sign, &cpy);
-	if(sign)
+	size = itoa2 (n,&aux, &sign, &cpy);
+	if (sign == 1)
 		aux[0] = '-';
-	while (i++ < size - 1)
+	i = 0;
+	while (i++ < size)
 	{
-		aux[size - i - 2 + sign] = (cpy % 10) + '0';
-		cpy /= 10;
+		aux[size - i + sign] = (cpy % 10) + '0';
+		cpy = cpy / 10;
 	}
-	aux[size - 1] = '\0';
+	aux[size + sign] = '\0';
 	return (aux);
 }
-int		itoa2(int n, char **str, int *sign,long int *num)
-{
-	int size;
 
-	size = 0;
-	sign = 0;
-	if (n < 0)
-	{
-		*num = -n;
-		sign = 1;
-	}
-	else
-		*num = n;
-	if (n == 0)
-		size = 1;
-	if (num == 0)
-		size = 1;
-	while (*num != 0)
-	{
-		size++;
-		*num = *num / 10;
-	}
-	*str = malloc(size + 1 + *sign);
-	return (size);
-}

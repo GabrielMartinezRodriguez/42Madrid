@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:28:24 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 13:46:56 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:20:37 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,41 @@
 #include <stdlib.h>
 #include "libft.h"
 
+static int		ft_chrcontainstr(const char c, char const *str);
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*aux;
-	int		i;
-	int		j;
-	int		flag;
-	int		k;
+	int		len;
+	int		i1;
+	int		i2;
+	char	*a;
 
-	aux = malloc(ft_strlen(s1) + 1);
+	len = ft_strlen(s1);
+	i1 = 0;
+	while (ft_chrcontainstr(s1[i1], set) && i1 < len)
+		i1++;
+	i2 = len - 1;
+	while (i2 >= 0 && ft_chrcontainstr(s1[i2], set))
+		i2--;
+	if (i2 >= i1)
+		a = ft_substr(s1, i1, i2 - i1 + 1);
+	else
+		return ("");
+	return (a);
+}
+
+static int		ft_chrcontainstr(const char c, char const *str)
+{
+	int flag;
+	int i;
+
+	flag = 0;
 	i = 0;
-	k = 0;
-	while (s1[i++] != '\0')
+	while (str[i] != '\0' && flag == 0)
 	{
-		j = 0;
-		flag = 1;
-		while (set[j] != '\0' && flag)
-		{
-			if (set[j] == s1[i])
-				flag = 0;
-			j++;
-		}
-		if (flag && ++k)
-			aux[k - 1] = s1[i];
+		if (str[i] == c)
+			flag = 1;
+		i++;
 	}
-	aux[k - 1] = '\0';
-	return (aux);
+	return (flag);
 }

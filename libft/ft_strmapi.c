@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_insert_string.c                                 :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 18:59:59 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 15:27:47 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/11 19:28:38 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/11 19:59:19 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
-char **ft_insert_string(char **table, char *str)
+char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
 {
-    int i;
-    char **aux;
+	int		len;
+	char	*aux;
+	int		i;
 
-    i = 0;
-    while(table[i++] != NULL);
-    i++;
-    aux = malloc(i * sizeof(char *));
-    i = 0;
-    while(table[i] != NULL)
-    {
-        aux[i]=table[i];
-        i++;
-    }
-    aux[i] = str;
-    aux[i + 1] = NULL;
-    free(table);
-    return aux;
+	len = ft_strlen(s);
+	aux = malloc(len + 1);
+	if (aux == NULL)
+		return (NULL);
+	i = 0;
+	while (i++ < len)
+		aux[i - 1] = f(i - 1, s[i - 1]);
+	aux[i - 1] = '\0';
+	return (aux);
 }
