@@ -6,33 +6,35 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 17:44:53 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 16:50:50 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 21:59:17 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memmove(void *destination, const void *source, size_t num)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dest;
-	unsigned char	*src;
-	unsigned char	inter[num];
-	size_t			i;
+	size_t	i;
 
-	dest = (unsigned char *)destination;
-	src = (unsigned char *)source;
-	i = 0;
-	while (i < num)
+	if (src == dst)
+		return (dst);
+	if (src < dst)
 	{
-		inter[i] = src[i];
-		i++;
+		i = len;
+		while (i > 0)
+		{
+			i--;
+			((char *)dst)[i] = ((char *)src)[i];
+		}
 	}
-	i = 0;
-	while (i < num)
+	else
 	{
-		dest[i] = inter[i];
-		i++;
+		i = 0;
+		while (i < len)
+		{
+			((char *)dst)[i] = ((char *)src)[i];
+			i++;
+		}
 	}
-	return (destination);
+	return (dst);
 }

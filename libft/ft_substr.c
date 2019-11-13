@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:22:56 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 17:39:01 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:55:00 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 	size_t			size;
 
-	if (s == NULL)
+	if (s == NULL || s[0] == '\0')
 		return (NULL);
 	size = ft_strlen(s);
 	aux = malloc(len + 1);

@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:42:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/09 18:55:14 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 22:22:51 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strdup(const char *str1)
 	while (str1[i1] != '\0')
 		i1++;
 	aux = malloc(i1 + 1);
+	if (aux == NULL)
+		return (NULL);
 	i2 = 0;
 	while (i2 < i1)
 	{

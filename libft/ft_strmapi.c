@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:28:38 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 19:59:19 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:44:28 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
 	char	*aux;
 	int		i;
 
+	if (s == NULL)
+		return (NULL);
 	len = ft_strlen(s);
 	aux = malloc(len + 1);
 	if (aux == NULL)

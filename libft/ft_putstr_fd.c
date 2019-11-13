@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:36:53 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 20:38:16 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:42:24 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int		len;
 
+	if (s == NULL)
+		return ;
 	len = ft_strlen(s);
 	write(fd, s, len);
 }

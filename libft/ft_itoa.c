@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 19:38:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 13:51:47 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 22:40:45 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #include <stdio.h>
 #include "libft.h"
 
-static int             itoa2(int n, char **str, int *sign,long int *num);
-
-static int		itoa2(int n, char **str, int *sign,long int *num)
+static int		itoa2(int n, int *sign, long int *num)
 {
-	int size;
-	long int cpy;
+	int			size;
+	long int	cpy;
 
 	size = 0;
 	*sign = 0;
@@ -38,12 +36,10 @@ static int		itoa2(int n, char **str, int *sign,long int *num)
 		size++;
 		cpy = cpy / 10;
 	}
-	*str = malloc(size + 1 + *sign);
 	return (size);
 }
 
-
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	size_t			size;
 	unsigned int	i;
@@ -51,7 +47,10 @@ char	*ft_itoa(int n)
 	int				sign;
 	char			*aux;
 
-	size = itoa2 (n,&aux, &sign, &cpy);
+	size = itoa2(n, &sign, &cpy);
+	aux = malloc(size + 1 + sign);
+	if (aux == NULL)
+		return (NULL);
 	if (sign == 1)
 		aux[0] = '-';
 	i = 0;
@@ -63,4 +62,3 @@ char	*ft_itoa(int n)
 	aux[size + sign] = '\0';
 	return (aux);
 }
-

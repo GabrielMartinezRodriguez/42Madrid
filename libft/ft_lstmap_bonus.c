@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 11:42:44 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/12 22:35:43 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/12 16:37:28 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/12 17:35:03 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*aux;
-	int		i;
-	int		t_s2;
+	t_list		*lst1;
+	t_list		*first;
 
-	if (s1 == NULL || s2 == NULL)
+	(void)(*del);
+	if (f == NULL)
 		return (NULL);
-	t_s2 = ft_strlen(s2);
-	aux = malloc(ft_strlen(s1) + t_s2 + 1);
-	if (aux == NULL)
+	if (lst == NULL)
 		return (NULL);
-	i = 0;
-	while (i < ft_strlen(s1))
+	lst1 = ft_lstnew(f(lst->content));
+	if (lst1 == NULL)
+		return (NULL);
+	first = lst1;
+	while (lst->next != NULL)
 	{
-		aux[i] = s1[i];
-		i++;
+		lst = lst->next;
+		lst1->next = ft_lstnew(f(lst->content));
+		if (lst1->next == NULL)
+			return (NULL);
+		lst1 = lst1->next;
 	}
-	i = 0;
-	while (i < t_s2)
-	{
-		aux[i + ft_strlen(s1)] = s2[i];
-		i++;
-	}
-	aux[i + ft_strlen(s1)] = '\0';
-	return (aux);
+	return (first);
 }

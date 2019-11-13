@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 22:59:05 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 23:34:38 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/12 22:41:13 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,3 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 		new->next = NULL;
 	}
 }
-
-
