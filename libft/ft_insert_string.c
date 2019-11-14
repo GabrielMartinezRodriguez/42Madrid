@@ -6,12 +6,10 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 18:59:59 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/12 22:30:34 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:07:50 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
 char	**ft_insert_string(char **table, char *str)

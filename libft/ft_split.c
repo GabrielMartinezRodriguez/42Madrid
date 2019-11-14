@@ -6,12 +6,10 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:53:10 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/12 22:59:08 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:10:57 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
 static void		odionorminette(char **aux, int *ini, int *seeking, int *i)

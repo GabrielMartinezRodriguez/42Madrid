@@ -6,12 +6,10 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:28:24 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/13 12:37:30 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:12:28 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 static int		ft_chrcontainstr(const char c, char const *str)

@@ -6,12 +6,9 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:21:47 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/12 22:06:24 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:10:06 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <string.h>
 
 #include "libft.h"
 

@@ -6,14 +6,13 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 19:36:28 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/11 21:25:49 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:17:14 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strnstr(char *str, char *to_find, size_t len)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	int		find;
 	size_t	i;
@@ -37,6 +36,6 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 		i++;
 	}
 	if (find == 1)
-		ptr = str + i - j;
+		ptr = (char *)(str + i - j);
 	return (ptr);
 }

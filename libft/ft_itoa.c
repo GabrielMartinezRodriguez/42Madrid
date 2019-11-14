@@ -6,12 +6,10 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 19:38:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/12 22:40:45 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:08:26 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
 static int		itoa2(int n, int *sign, long int *num)

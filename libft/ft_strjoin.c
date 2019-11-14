@@ -6,12 +6,10 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:42:44 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/12 22:35:43 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:11:25 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)

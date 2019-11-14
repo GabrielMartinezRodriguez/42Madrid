@@ -6,11 +6,13 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 12:50:19 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 18:49:45 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:07:20 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(char *str)
+#include "libft.h"
+
+int		ft_atoi(const char *str)
 {
 	int number;
 	int i;

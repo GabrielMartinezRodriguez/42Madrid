@@ -6,13 +6,13 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:57:05 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/06 16:53:12 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:16:28 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	char	*devolver;
 	int		i;
@@ -25,7 +25,7 @@ char	*ft_strchr(char *s, int c)
 	{
 		if (c == s[i])
 		{
-			devolver = &s[i];
+			devolver = (char *)(&s[i]);
 			fin = 1;
 		}
 		if (s[i] == '\0')
