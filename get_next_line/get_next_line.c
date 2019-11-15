@@ -54,7 +54,7 @@ static int errors_and_ini(int fd, t_list_fd *lst, char ***str, int *flag)
 	i = 0;
 	while(i < BUFFER_SIZE + 1)
 	{
-		str[i] = '\0';
+		(*str)[0][i] = '\0';
 		i++;
 	}
 	ft_strlcpy((*str)[0], lst->str, ft_strlen(lst->str) + 1);
