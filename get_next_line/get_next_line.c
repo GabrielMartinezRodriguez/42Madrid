@@ -103,7 +103,7 @@ int get_next_line(int fd, char **line)
 		str[2] = str[1];
 		if(flag == 1 && read_fd(fd, str, &i, &flag) < 0)
 			return (-1);
-		else 
+		else if(flag == 0)
 			i++;
 	}
 
