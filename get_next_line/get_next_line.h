@@ -28,4 +28,5 @@ int		get_next_line(int fd, char **line);
 int		ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif

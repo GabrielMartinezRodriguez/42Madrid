@@ -77,3 +77,30 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 		dest[i] = '\0';
 	return (ret);
 }
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char			*aux;
+	unsigned int	i;
+	size_t			size;
+
+	if (s == NULL)
+		return (NULL);
+	size = ft_strlen(s);
+	aux = malloc(len + 1);
+	if (aux == NULL)
+		return (NULL);
+	if (start < size)
+	{
+		i = 0;
+		while (i < len && s[start + i] != '\0')
+		{
+			aux[i] = s[start + i];
+			i++;
+		}
+		aux[i] = '\0';
+	}
+	else
+		return (ft_substr("", 0, 1));
+	return (aux);
+}
