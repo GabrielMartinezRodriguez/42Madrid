@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus copy.h                         :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:17:12 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/16 17:13:56 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/16 19:54:23 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 # include <sys/types.h>
 # include <unistd.h>
 # include <fcntl.h>
-//# define BUFFER_SIZE 16
 
 typedef struct	s_read_history
 {
-	int				fd;
-	char			*str;
+	int						fd;
+	char					*str;
 	struct s_read_history	*next;
 }				t_list_fd;
 
-int		get_next_line(int fd, char **line);
-int		ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+int				get_next_line(int fd, char **line);
+int				ft_strlen(const char *str);
+char			*ft_strjoin(char const *s1, char const *s2);
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+void			ihatenormi(char **str, int i);
 #endif

@@ -6,13 +6,13 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:17:17 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/16 14:19:04 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/16 19:53:34 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*aux;
 	int		i;
@@ -40,7 +40,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (aux);
 }
 
-int		ft_strlen(const char *str)
+int				ft_strlen(const char *str)
 {
 	int tam;
 
@@ -78,7 +78,7 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 	return (ret);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char			*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*aux;
 	unsigned int	i;
@@ -103,4 +103,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	else
 		aux[0] = '\0';
 	return (aux);
+}
+
+void	ihatenormi(char **str, int i)
+{
+	str[0][i] = '\0';
+	str[1] = ft_strjoin(str[1], str[0]);
+	free(str[2]);
+	str[2] = str[1];
 }

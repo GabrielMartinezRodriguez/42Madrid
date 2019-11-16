@@ -6,19 +6,19 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:17:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/16 17:07:40 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/16 19:54:30 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int read_fd(int fd, char **str, int *i, int *flag)
+static int			read_fd(int fd, char **str, int *i, int *flag)
 {
 	int len;
 
 	len = 0;
 	len = read(fd, str[0], BUFFER_SIZE);
-	if(len == 0)
+	if (len == 0)
 		*flag = 0;
 	else
 	{
@@ -28,52 +28,50 @@ static int read_fd(int fd, char **str, int *i, int *flag)
 	return (len);
 }
 
-static int	loop(char **str, int *flag, int fd, t_list_fd *el)
+static int			loop(char **str, int *flag, int fd, t_list_fd *el)
 {
 	int i;
 	int read_info;
 
+	read_info = 1;
 	i = 0;
-	while(*flag)
+	while (*flag)
 	{
-		while(str[0][i++] != '\0' && str[0][i - 1] != '\n');
-		if(str[0][--i] == '\n')
+		while (str[0][i] != '\0' && str[0][i] != '\n')
+			i++;
+		if (str[0][i] == '\n')
 			*flag = 0;
-		str[0][i] = '\0';
-		str[1] = ft_strjoin(str[1], str[0]);
-		free(str[2]);
-		str[2] = str[1];
-		if(*flag == 1)
+		ihatenormi(str, i);
+		if (*flag == 1)
 		{
-			if((read_info = read_fd(fd, str, &i, flag)) < 0)
-				return(-1);
-			else if(read_info == 0)
+			if ((read_info = read_fd(fd, str, &i, flag)) < 0)
+				return (-1);
+			else if (read_info == 0)
 				el->str = ft_substr("", 0, 1);
 		}
 		else
 			i++;
 	}
-	if(read_info != 0)
+	if (read_info != 0)
 		el->str = &(str[0][i]);
 	return (read_info);
 }
 
-static t_list_fd *ft_find_fd(int fd, t_list_fd **list)
+static t_list_fd	*ft_find_fd(int fd, t_list_fd **list)
 {
 	int			flag;
 	t_list_fd	*aux;
 
 	flag = 1;
 	aux = *list;
-	
-	while(aux && flag)
+	while (aux && flag)
 	{
-		if(fd == aux->fd)
+		if (fd == aux->fd)
 			flag = 0;
 		else
 			aux = aux->next;
 	}
-	if(flag != 0)
+	if (flag != 0)
 	{
 		aux = malloc(sizeof(t_list_fd));
 		aux->fd = fd;
@@ -81,24 +79,23 @@ static t_list_fd *ft_find_fd(int fd, t_list_fd **list)
 		aux->str = ft_substr("", 0, 1);
 		*list = aux;
 	}
-	return(aux);
+	return (aux);
 }
 
-static int errors_and_ini(int fd, t_list_fd *lst, char ***str, int *flag)
+static int			errors_and_ini(int fd, t_list_fd *lst,
+char ***str, int *flag)
 {
 	int i;
 
 	*flag = 1;
-
 	*str = malloc(sizeof(char *) * 3);
 	(*str)[0] = malloc(BUFFER_SIZE + 1);
 	(*str)[1] = ft_substr("", 0, 1);
 	(*str)[2] = (*str)[1];
-
-	if(str == NULL || fd < 0)
+	if (str == NULL || fd < 0)
 		return (0);
 	i = 0;
-	while(i < BUFFER_SIZE + 1)
+	while (i < BUFFER_SIZE + 1)
 	{
 		(*str)[0][i] = '\0';
 		i++;
@@ -107,38 +104,23 @@ static int errors_and_ini(int fd, t_list_fd *lst, char ***str, int *flag)
 	return (1);
 }
 
-
-
-int get_next_line(int fd, char **line)
+int					get_next_line(int fd, char **line)
 {
-	int             ret;
-	int             flag;
-	t_list_fd		*element;
-	char			**str; /* 3 strings: 0 - Buffer de lectura. 1 - Linea. 2 - Aux */
-	static t_list_fd  *list = NULL;
+	int					ret;
+	int					flag;
+	t_list_fd			*element;
+	char				**str;
+	static t_list_fd	*list = NULL;
 
 	element = ft_find_fd(fd, &list);
-	if(!errors_and_ini(fd, element, &str, &flag) || line == NULL || BUFFER_SIZE == 0)
+	if (!errors_and_ini(fd, element, &str, &flag)
+	|| line == NULL || BUFFER_SIZE < 1)
 		return (-1);
 	ret = loop(str, &flag, fd, element);
-	if(ret < 0)
+	if (ret < 0)
 		ret = -1;
-	else if(ret > 0)
+	else if (ret > 0)
 		ret = 1;
 	*line = str[1];
 	return (ret);
 }
-
-
-/*int main()
-{
-	char	*line;
-	int		fd;
-	int		fd1;
-
-	fd = open("hola.txt", O_RDONLY);
-	while(get_next_line(fd, &line))
-		printf("%s\n", line);
-	printf("%s\n", line);
-}
-*/
