@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:17:17 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/16 14:19:04 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:14:42 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		aux[i] = '\0';
 	}
 	else
-		aux[0] = '\0';
+		return (ft_substr("", 0, 1));
 	return (aux);
 }
