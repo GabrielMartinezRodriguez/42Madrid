@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 11:17:12 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/16 19:54:23 by gmartine         ###   ########.fr       */
+/*   Created: 2019/11/19 16:06:57 by gmartine          #+#    #+#             */
+/*   Updated: 2019/11/19 18:56:36 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,14 @@
 # include <sys/types.h>
 # include <unistd.h>
 # include <fcntl.h>
-
-typedef struct	s_read_history
-{
-	int						fd;
-	char					*str;
-	struct s_read_history	*next;
-}				t_list_fd;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 int				get_next_line(int fd, char **line);
-int				ft_strlen(const char *str);
+void			*ft_memchr(const void *s, int c, size_t n);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char			*ft_strdup(const char *str1);
 char			*ft_strjoin(char const *s1, char const *s2);
-unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
-void			ihatenormi(char **str, int i);
+size_t			ft_strlen(const char *s);
 #endif
