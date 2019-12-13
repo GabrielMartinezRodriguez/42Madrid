@@ -29,3 +29,51 @@ void    applySpaces(char **str, t_flag flag, int size, int left)
     free(cpy);
     free(aux);
 }
+char	*applyCeros(t_flag flag, char *str)
+{
+	int size;
+	char *ret;
+
+	if(flag.active)
+	{
+		size = ft_strlen(str);
+		size = flag.number - size;
+		if(size > 0)
+		{
+			ret = malloc(sizeof(char) * (flag.number + 1));		
+			ft_memset(ret, '0', size);
+			ft_strlcpy(&ret[size], str, ft_strlen(str) + 1);
+			free(str);
+			return (ret);
+		}
+	}
+	return (str);
+}
+
+char	*applyCerosHex(t_flag flag, char *str)
+{
+	int size;
+	char *ret;
+	char *aux;
+
+	if(flag.active)
+	{
+		size = ft_strlen(str);
+		size = flag.number - size;
+		if(size > 0)
+		{
+			ret = malloc(sizeof(char) * (flag.number + 1));		
+			ft_memset(ret, '0', size);
+			ret[size] = '\0';
+			aux = ret;
+			ret = ft_strjoin("0x", ret);
+			free(aux);
+			aux = ret;
+			ret = ft_strjoin(ret, &str[2]);
+			free(aux);
+			free(str);
+			return (ret);
+		}
+	}
+	return (str);
+}

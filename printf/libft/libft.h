@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:44:27 by gmartine          #+#    #+#             */
-/*   Updated: 2019/11/16 17:46:40 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/13 18:31:45 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *));
 int				ft_isspace(int c);
 size_t			ft_strnlen(const char *s, size_t maxlen);
+char			*ft_itoaLong(long int n);
 #endif

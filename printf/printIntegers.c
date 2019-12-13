@@ -11,16 +11,16 @@ char	*printIntegers(t_list_flags flags, va_list ap)
 	str = strCeros(flags.precision, str);
 	size = ft_strlen(str);
 	if(flags.sign.active)
-		applySpaces(&str, flags.sign, size, 1);
+		applySpaces(&str, flags.sign, size, 0);
 	else if(flags.cero.active)
 	{
 		if(!flags.precision.active)
 			str = strCeros(flags.cero, str);
 		else
-			applySpaces(&str, flags.cero, size, 0);
+			applySpaces(&str, flags.cero, size, 1);
 	}
 	else if(flags.minimum.active)
-		applySpaces(&str, flags.minimum, size, 0);
+		applySpaces(&str, flags.minimum, size, 1);
 	return(str);
 }
 

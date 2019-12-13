@@ -6,37 +6,45 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:32:16 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/12 21:01:28 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/13 18:57:11 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 
-int main()
+int main(int argn, char **args)
 {
-	//ft_printf("printf %*d\n",-838);
-	ft_printf("fake printf %0100.89-100d\n",-8, 45);
+	unsigned int p = 3147483647;
+	printf("printf %200u",p);
+	ft_printf("printf %200u\n",p);
+	
 
 }
 
-char *renderVariable(char c, t_list_flags flags, va_list ap, char *buff)
+char *renderVariable(char c, t_list_flags flags, va_list ap)
 {
 	int integers;
 	char *returned;
 	char *cpy;
 	if (c == 'i' || c == 'd')
 		returned = printIntegers(flags, ap);
-	returned = ft_strjoin(buff, returned);
-	free(buff);
+	else if (c == 's')
+		returned = printString(flags, ap);
+	else if (c == 'c')
+		returned = printChar(flags, ap);
+	else if (c == 'p')
+		returned = printPointer(flags, ap);
+	else if (c == 'u')
+		returned = printUnsignedIntegers(flags, ap);
 	return (returned);
 }
 
 int ft_isConversion(int c)
 {
-	return (c == 'i' || c == 'd' || c == 's');
+	return (c == 'i' || c == 'd' || c == 's' || c == 'c' || c == 'p' || c == 'u');
 }
-int			ft_readNumber(const char *str, va_list ap) // debo cambiarlo
+int			ft_readNumber(const char *str, va_list ap)
 {
 	long	nbr;
 
@@ -55,16 +63,13 @@ int			ft_readNumber(const char *str, va_list ap) // debo cambiarlo
 	}
 	return (int)(nbr);
 }
-int ft_ScanFlag(t_flag *flag, char *str, int *i, va_list ap)
+void ft_ScanFlag(t_flag *flag, char *str, int *i, va_list ap)
 {
 	int aux;
 
 	aux = ft_readNumber(str, ap);
-	if (aux != 0)
-	{
-		flag->active = 1;
-		flag->number = aux;
-	}
+	flag->active = 1;
+	flag->number = aux;
 	if (*str == '*')
 		*i = *i + 1;
 	while (ft_isdigit(*str++))
@@ -77,7 +82,6 @@ int printVariable(char *str, va_list ap, char **buff)
 	int				i;
 
 	i = 0;
-	*buff = ft_calloc(1, 1);
 	flags = ft_calloc(sizeof(t_list_flags), 1);
 	while (!ft_isConversion(str[i]))
 	{
@@ -93,7 +97,7 @@ int printVariable(char *str, va_list ap, char **buff)
 		else
 			i++;
 	}
-	*buff = renderVariable(str[i], *flags, ap, *buff);
+	*buff = renderVariable(str[i], *flags, ap);
 	return (i);
 }
 
@@ -118,6 +122,7 @@ int		ft_printf(const char *str, ...)
 			len = ft_strlen(buff);
 			write(1, buff, len);
 			charsN += len;
+			free(buff);
 		}
 		else
 		{
