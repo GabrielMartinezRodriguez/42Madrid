@@ -77,3 +77,25 @@ char	*applyCerosHex(t_flag flag, char *str)
 	}
 	return (str);
 }
+
+char byteToHex(char c)
+{
+	if(c < 10)
+		return (c + '0');
+	else if (c < 16)
+		return (c +  'a' - 10);
+	else
+		return (0);
+}
+
+void toUpperCase(char *str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+	{
+		str[i] = ft_toupper((int)str[i]);
+		i++;
+	}
+}
