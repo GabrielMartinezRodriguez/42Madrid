@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:48:43 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 16:30:46 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:53:55 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,22 @@ char			*print_pointer(t_list_flags flags, va_list ap)
 
 	ptr = (void *)va_arg(ap, void *);
 	string = ptr_to_str(ptr);
-	size = ft_strlen(string);
-	if (flags.precision.active)
-		string = apply_ceros_hex(flags.precision, string);
+	
+	string = apply_ceros_hex(flags.precision, string, 1);
 	size = ft_strlen(string);
 	if (flags.sign.active)
 		apply_spaces(&string, flags.sign, size, 0);
 	else if (flags.cero.active)
 	{
 		if (!flags.precision.active)
-			string = apply_ceros(flags.cero, string);
+			string = apply_ceros_hex(flags.cero, string, 0);
 		else
 			apply_spaces(&string, flags.minimum, size, 1);
 	}
 	else if (flags.minimum.active)
 		apply_spaces(&string, flags.minimum, size, 1);
+	else if(ptr == NULL)
+		return(ft_strdup("0x0"));
 	return (string);
 }
 

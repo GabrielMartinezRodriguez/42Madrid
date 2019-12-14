@@ -6,18 +6,17 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:32:16 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 14:47:41 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:41:47 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int main()
+/*int main()
 {
-	char *s = "este es el string";
-	ft_printf("ft_printf %s y este es su puntero:%p\n",s,s);
-	printf("printf %s y este es su puntero:%p\n",s,s);
-}
+	int h = ft_printf("%.x", 0);
+	//printf("%7d", 33);
+}*/
 
 int		ft_printf(const char *str, ...)
 {

@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 14:03:01 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 14:42:07 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:10:24 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*print_unsigned_integers(t_list_flags flags, va_list ap)
 
 	number = (unsigned int)va_arg(ap, void *);
 	string = ft_itoaLong(number);
-	string = str_ceros(flags.precision, string);
+	string = str_precision(flags.precision, string);
 	size = ft_strlen(string);
 	if (flags.sign.active)
 		apply_spaces(&string, flags.sign, size, 0);

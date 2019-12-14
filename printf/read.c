@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 14:03:53 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 14:41:05 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:08:41 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*render_variable(char c, t_list_flags flags, va_list ap)
 			ft_touppercase(returned);
 	}
 	else
-		returned = ft_strdup("%");
+		returned = print_per_cent(flags);
 	return (returned);
 }
 

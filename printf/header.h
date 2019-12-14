@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:30:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 14:35:35 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:18:58 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ char			*render_variable(char c, t_list_flags flags, va_list ap);
 
 char			*print_integers(t_list_flags flags, va_list ap);
 char			*str_ceros(t_flag flag, char *str);
+char			*str_precision(t_flag flag, char *str);
 
 char			*print_string(t_list_flags flags, va_list ap);
+char			*string_precision(char *string, int number);
 
 char			*print_char(t_list_flags flags, va_list ap);
 char			*char_to_string(char c);
+
+char			*print_per_cent(t_list_flags flags);
 
 char			*print_pointer(t_list_flags flags, va_list ap);
 char			*ptr_to_str(void *ptr);
@@ -61,5 +65,5 @@ char			*unsigned_to_hex(unsigned int number);
 char			*generate_chars(char c, int number);
 void			apply_spaces(char **str, t_flag flags, int size, int left);
 char			*apply_ceros(t_flag flag, char *str);
-char			*apply_ceros_hex(t_flag flag, char *str);
+char			*apply_ceros_hex(t_flag flag, char *str, int precision);
 #endif
