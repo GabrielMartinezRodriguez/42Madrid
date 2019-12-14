@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printIntegers.c                                    :+:      :+:    :+:   */
+/*   print_integers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:45:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 13:47:07 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:41:53 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char	*printIntegers(t_list_flags flags, va_list ap)
+char	*print_integers(t_list_flags flags, va_list ap)
 {
 	int		number;
 	char	*str;
@@ -20,19 +20,19 @@ char	*printIntegers(t_list_flags flags, va_list ap)
 
 	number = (int)va_arg(ap, void *);
 	str = ft_itoa((int)number);
-	str = strCeros(flags.precision, str);
+	str = str_ceros(flags.precision, str);
 	size = ft_strlen(str);
 	if (flags.sign.active)
-		applySpaces(&str, flags.sign, size, 0);
+		apply_spaces(&str, flags.sign, size, 0);
 	else if (flags.cero.active)
 	{
 		if (!flags.precision.active)
-			str = strCeros(flags.cero, str);
+			str = str_ceros(flags.cero, str);
 		else
-			applySpaces(&str, flags.cero, size, 1);
+			apply_spaces(&str, flags.cero, size, 1);
 	}
 	else if (flags.minimum.active)
-		applySpaces(&str, flags.minimum, size, 1);
+		apply_spaces(&str, flags.minimum, size, 1);
 	return (str);
 }
 

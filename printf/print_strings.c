@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_chars.c                                      :+:      :+:    :+:   */
+/*   print_strings.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/14 13:41:01 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 14:30:54 by gmartine         ###   ########.fr       */
+/*   Created: 2019/12/14 13:55:56 by gmartine          #+#    #+#             */
+/*   Updated: 2019/12/14 14:43:18 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char	*print_char(t_list_flags flags, va_list ap)
+char		*print_string(t_list_flags flags, va_list ap)
 {
 	char	*string;
-	char	c;
+	char	*cpy;
 	int		size;
 
-	size = 1;
-	c = (char)va_arg(ap, void *);
-	string = char_to_string(c);
+	string = (char *)va_arg(ap, void *);
+	string = ft_strdup(string);
+	if (flags.precision.active)
+	{
+		cpy = string;
+		string = ft_substr(string, 0, flags.precision.number);
+		free(cpy);
+	}
+	size = ft_strlen(string);
 	if (flags.sign.active)
 		apply_spaces(&string, flags.sign, size, 0);
 	else if (flags.cero.active)
@@ -28,13 +34,4 @@ char	*print_char(t_list_flags flags, va_list ap)
 	else if (flags.minimum.active)
 		apply_spaces(&string, flags.minimum, size, 1);
 	return (string);
-}
-
-char	*char_to_string(char c)
-{
-	char *str;
-
-	str = ft_calloc(1, 2);
-	str[0] = c;
-	return (str);
 }

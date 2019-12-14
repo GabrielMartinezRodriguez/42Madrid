@@ -1,34 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/14 14:03:53 by gmartine          #+#    #+#             */
+/*   Updated: 2019/12/14 14:41:05 by gmartine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
-char *renderVariable(char c, t_list_flags flags, va_list ap)
+char	*render_variable(char c, t_list_flags flags, va_list ap)
 {
 	char *returned;
+
 	if (c == 'i' || c == 'd')
-		returned = printIntegers(flags, ap);
+		returned = print_integers(flags, ap);
 	else if (c == 's')
-		returned = printString(flags, ap);
+		returned = print_string(flags, ap);
 	else if (c == 'c')
-		returned = printChar(flags, ap);
+		returned = print_char(flags, ap);
 	else if (c == 'p')
-		returned = printPointer(flags, ap);
+		returned = print_pointer(flags, ap);
 	else if (c == 'u')
-		returned = printUnsignedIntegers(flags, ap);
+		returned = print_unsigned_integers(flags, ap);
 	else if (c == 'x' || c == 'X')
 	{
-		returned = printUnsignedHex(flags, ap);
+		returned = print_unsigned_hex(flags, ap);
 		if (c == 'X')
-			toUpperCase(returned);
+			ft_touppercase(returned);
 	}
 	else
 		returned = ft_strdup("%");
 	return (returned);
 }
 
-int ft_isConversion(int c)
+int		ft_is_conversion(int c)
 {
-	return (c == 'i' || c == 'd' || c == 's' || c == 'c' || c == 'p' || c == 'u' || c == 'x' || c == 'X' || c == '%');
+	return (c == 'i' || c == 'd' || c == 's' || c == 'c' || c == 'p' ||
+	c == 'u' || c == 'x' || c == 'X' || c == '%');
 }
-int			ft_readNumber(const char *str, va_list ap)
+
+int		ft_read_number(const char *str, va_list ap)
 {
 	long	nbr;
 
@@ -47,11 +62,12 @@ int			ft_readNumber(const char *str, va_list ap)
 	}
 	return (int)(nbr);
 }
-void ft_ScanFlag(t_flag *flag, char *str, int *i, va_list ap)
+
+void	ft_scan_flag(t_flag *flag, char *str, int *i, va_list ap)
 {
 	int aux;
 
-	aux = ft_readNumber(str, ap);
+	aux = ft_read_number(str, ap);
 	flag->active = 1;
 	flag->number = aux;
 	if (*str == '*')
@@ -59,27 +75,27 @@ void ft_ScanFlag(t_flag *flag, char *str, int *i, va_list ap)
 	while (ft_isdigit(*str++))
 		*i = *i + 1;
 }
-int printVariable(char *str, va_list ap, char **buff)
+
+int		print_variable(char *str, va_list ap, char **buff)
 {
 	t_list_flags	*flags;
 	int				i;
 
 	i = 0;
 	flags = ft_calloc(sizeof(t_list_flags), 1);
-	while (!ft_isConversion(str[i]))
+	while (!ft_is_conversion(str[i]))
 	{
-		if (str[i] == '-') /*ESPACIO PARA DETECCION DE FLAGS - ORDENADO POR PRIORIDAD */
-			ft_ScanFlag(&(flags->sign), &(str[++i]), &i, ap);
+		if (str[i] == '-')
+			ft_scan_flag(&(flags->sign), &(str[++i]), &i, ap);
 		else if (str[i] == '0')
-			ft_ScanFlag(&(flags->cero), &(str[++i]), &i, ap);
-		else if (((str[i] >= '1' && str[i] <= '9') || str[i] == '*' ))
-			ft_ScanFlag(&(flags->minimum), &(str[i]), &i, ap);
-		/* FLAG APLICABLES SIN SOBREESCRIBIR A LOS OTROS*/
+			ft_scan_flag(&(flags->cero), &(str[++i]), &i, ap);
+		else if (((str[i] >= '1' && str[i] <= '9') || str[i] == '*'))
+			ft_scan_flag(&(flags->minimum), &(str[i]), &i, ap);
 		else if (str[i] == '.')
-			ft_ScanFlag(&(flags->precision), &(str[++i]), &i, ap);
+			ft_scan_flag(&(flags->precision), &(str[++i]), &i, ap);
 		else
 			i++;
 	}
-	*buff = renderVariable(str[i], *flags, ap);
+	*buff = render_variable(str[i], *flags, ap);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:44:27 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/13 18:31:45 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:13:39 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void (*del)(void *));
 int				ft_isspace(int c);
 size_t			ft_strnlen(const char *s, size_t maxlen);
 char			*ft_itoaLong(long int n);
+void			ft_touppercase(char *str);
 #endif
