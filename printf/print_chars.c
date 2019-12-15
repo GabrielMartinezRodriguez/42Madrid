@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:41:01 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 14:30:54 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 11:43:35 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,26 @@ char	*char_to_string(char c)
 {
 	char *str;
 
-	str = ft_calloc(1, 2);
-	str[0] = c;
+	if(c != '\0')
+	{
+		str = ft_calloc(1, 2);
+		str[0] = c;
+	}
+	else
+	{
+		str = ft_strdup("null");
+		null_case(0, 1);
+	}
 	return (str);
+}
+
+int null_case(int get, int set)
+{
+	static int null_case = 0;
+
+	if(get == 1)
+		return(null_case);
+	else if(set == 1)
+		null_case = set;
+	return (0);
 }

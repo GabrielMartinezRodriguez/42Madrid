@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:32:16 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 19:41:47 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 12:37:53 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*int main()
 {
-	int h = ft_printf("%.x", 0);
+	int h = ft_printf("%32s", "abc");
 	//printf("%7d", 33);
 }*/
 
@@ -46,6 +46,28 @@ int		ft_printf(const char *str, ...)
 
 int		show_str(char *buff, unsigned int len)
 {
-	write(1, buff, len);
-	return (len);
+	unsigned int i;
+
+	i = 0;
+	if (!null_case(1, 0))
+	{
+		write(1, buff, len);
+		return (len);
+	}
+	else
+	{
+		null_case(0, 0);
+		while (i < len)
+		{
+			if (ft_strncmp(&buff[i], "null", 4) == 0)
+			{
+				i += 3;
+				write(1, "\0", 1);
+			}
+			else
+				write(1, &buff[i], 1);
+			i++;
+		}
+		return (len - 3);
+	}
 }

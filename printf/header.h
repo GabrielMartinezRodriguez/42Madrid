@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:30:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 19:18:58 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 12:32:34 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct	s_flag{
 	int active;
 	int number;
+	int star;
 }				t_flag;
 
 typedef struct	s_list_flags
@@ -49,6 +50,7 @@ char			*string_precision(char *string, int number);
 
 char			*print_char(t_list_flags flags, va_list ap);
 char			*char_to_string(char c);
+int				null_case(int get, int set);
 
 char			*print_per_cent(t_list_flags flags);
 
@@ -66,4 +68,6 @@ char			*generate_chars(char c, int number);
 void			apply_spaces(char **str, t_flag flags, int size, int left);
 char			*apply_ceros(t_flag flag, char *str);
 char			*apply_ceros_hex(t_flag flag, char *str, int precision);
+
+void			star_exceptions(t_list_flags *flags);
 #endif

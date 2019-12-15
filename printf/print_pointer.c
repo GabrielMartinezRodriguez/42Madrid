@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:48:43 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 19:53:55 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 12:48:35 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ char			*print_pointer(t_list_flags flags, va_list ap)
 	}
 	else if (flags.minimum.active)
 		apply_spaces(&string, flags.minimum, size, 1);
-	else if(ptr == NULL)
-		return(ft_strdup("0x0"));
 	return (string);
 }
 
@@ -56,6 +54,7 @@ char			*ptr_to_str(void *ptr)
 
 	cast = (unsigned char *)&ptr;
 	str = ini_str_ptr();
+	str = (ptr == NULL ? ft_strdup("0x0") : str);
 	ini_var(&i, &j, &flag);
 	while (j < 8)
 	{
