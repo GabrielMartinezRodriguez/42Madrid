@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 14:15:51 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/15 12:53:56 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:41:46 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,19 @@ char	*apply_ceros_hex(t_flag flag, char *str, int precision)
 	int		size;
 	char	*ret;
 	char	*aux;
-	
+
 	if (flag.active)
 	{
-		if(precision == 1 && flag.number == 0)
-			return(ft_strdup("0x"));
+		if (precision == 1 && flag.number == 0)
+			return (ft_strdup("0x"));
 		size = ft_strlen(str);
-		size = flag.number - size + (precision  == 1 ? 2 : 0);
+		size = flag.number - size + (precision == 1 ? 2 : 0);
 		if (size > 0)
 		{
 			ret = malloc(sizeof(char) * (flag.number + 1));
 			ft_memset(ret, '0', size);
 			ret[size] = '\0';
-			aux = ret;
 			ret = ft_strjoin("0x", ret);
-			free(aux);
 			aux = ret;
 			ret = ft_strjoin(ret, &str[2]);
 			free(aux);

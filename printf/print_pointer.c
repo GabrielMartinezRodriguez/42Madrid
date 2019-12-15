@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:48:43 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/15 12:48:35 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:38:56 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ static void		ini_var(int *i, int *j, int *flag)
 	*flag = -1;
 }
 
+static char		*ini_print_ptr(int *i, int *j, int *flag, void *ptr)
+{
+	char *str;
+
+	ini_var(i, j, flag);
+	str = ini_str_ptr();
+	str = (ptr == NULL ? ft_strdup("0x0") : str);
+	return (str);
+}
+
 char			*print_pointer(t_list_flags flags, va_list ap)
 {
 	void	*ptr;
@@ -27,7 +37,6 @@ char			*print_pointer(t_list_flags flags, va_list ap)
 
 	ptr = (void *)va_arg(ap, void *);
 	string = ptr_to_str(ptr);
-	
 	string = apply_ceros_hex(flags.precision, string, 1);
 	size = ft_strlen(string);
 	if (flags.sign.active)
@@ -53,17 +62,16 @@ char			*ptr_to_str(void *ptr)
 	int				flag;
 
 	cast = (unsigned char *)&ptr;
-	str = ini_str_ptr();
-	str = (ptr == NULL ? ft_strdup("0x0") : str);
-	ini_var(&i, &j, &flag);
+	str = ini_print_ptr(&i, &j, &flag, ptr);
 	while (j < 8)
 	{
 		if (flag >= 0 || ((cast[7 - j] >> 4) & 15) != 0)
 		{
 			flag = (flag == -1 ? 0 : flag);
-			str[i * 2 + (flag == 0 ? 0 : -1)] = byte_to_hex((cast[7 - j] >> 4) & 15);
+			str[i * 2 + (flag == 0 ? 0 : -1)] = byte_to_hex((cast[7 - j] >> 4)
+			& 15);
 		}
-		if (flag >= 0|| (cast[7 - j] & 15) != 0)
+		if ((flag >= 0 || (cast[7 - j] & 15) != 0))
 		{
 			flag = (flag == -1) ? 1 : flag;
 			str[i * 2 + (flag == 1 ? 0 : 1)] = byte_to_hex(cast[7 - j] & 15);

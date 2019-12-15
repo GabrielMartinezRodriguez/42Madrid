@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 19:38:15 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/13 18:32:23 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:49:24 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		itoa2(long int n, int *sign, long int *num)
 	return (size);
 }
 
-char		*ft_itoaLong(long int n)
+char			*ft_itoa_long(long int n)
 {
 	size_t			size;
 	unsigned int	i;

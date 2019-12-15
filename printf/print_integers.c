@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:45:37 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 18:28:34 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:08:43 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ char	*str_precision(t_flag flag, char *str)
 	{
 		sign = 0;
 		size = ft_strlen(str);
-		if(str[0] == '-')
+		if (str[0] == '-')
 			sign = 1;
 		size = flag.number - size + sign;
-		if(str[0] == '0' && flag.number == 0)
-			return(ft_strdup(""));
+		if (str[0] == '0' && flag.number == 0)
+			return (ft_strdup(""));
 		if (size > 0)
 		{
 			ret = ft_calloc((sizeof(char)), flag.number + sign + 1);

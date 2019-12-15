@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 14:03:53 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/15 12:33:04 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:06:54 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void	ft_scan_flag(t_flag *flag, char *str, int *i, va_list ap)
 	if (*str == '*')
 	{
 		*i = *i + 1;
-		if(flag->number < 0)
+		if (flag->number < 0)
 		{
 			flag->number = -aux;
-			flag->star  = 1;
+			flag->star = 1;
 		}
 	}
 	while (ft_isdigit(*str++))

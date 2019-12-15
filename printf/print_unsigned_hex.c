@@ -6,7 +6,7 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 14:00:11 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/14 19:41:28 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:14:08 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ char	*print_unsigned_hex(t_list_flags flags, va_list ap)
 	number = (unsigned int)va_arg(ap, void *);
 	string = unsigned_to_hex(number);
 	if (flags.precision.active)
-		string = (string[0] == '0' && ft_strlen(string) == 1 && flags.precision.number == 0) ? ft_strdup("") : apply_ceros(flags.precision, string);
+		string = (string[0] == '0' && ft_strlen(string) == 1 &&
+		flags.precision.number == 0) ? ft_strdup("") :
+		apply_ceros(flags.precision, string);
 	size = ft_strlen(string);
 	if (flags.sign.active)
 		apply_spaces(&string, flags.sign, size, 0);

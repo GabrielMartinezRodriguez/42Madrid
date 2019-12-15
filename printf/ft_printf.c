@@ -6,17 +6,11 @@
 /*   By: gmartine <gmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:32:16 by gmartine          #+#    #+#             */
-/*   Updated: 2019/12/15 12:37:53 by gmartine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:44:02 by gmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-/*int main()
-{
-	int h = ft_printf("%32s", "abc");
-	//printf("%7d", 33);
-}*/
 
 int		ft_printf(const char *str, ...)
 {
@@ -41,6 +35,7 @@ int		ft_printf(const char *str, ...)
 			chars_n += show_str((char *)(&str[i]), 1);
 		i++;
 	}
+	va_end(ap);
 	return (chars_n);
 }
 
